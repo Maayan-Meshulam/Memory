@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="AmountCardsOptions">
+        <label style="font-weight: bold;">בחר כמות קלפים למשחק</label>
+        <br>
+        <div>
+            <button id="option1Amount" onclick="createArrCards(1)">3X4</button>
+            <button id="option2Amount" onclick="createArrCards(2)">4X5</button>
+            <button id="option3Amount" onclick="createArrCards(3)">5X6</button>  
+        </div>
+        <div style="margin-top: 20px;text-align: center;">   
+            <p style="display: inline-block;"> נסיונות : <span id="amountOfShowingCardsTotal">0</span><p>
+            <p style="display: inline-block;"> הצלחות : <span id="amountOfSuccessCoupleCards">0</span><p>
+        </div>
+    </div>
+    <div id="containerCards">
+        <img src="images/ImgStart.jpg">
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>
