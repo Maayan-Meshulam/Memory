@@ -1,13 +1,13 @@
 // let resourceId = "b1fdc757-07e3-4875-a023-99e59ac44f24";
 let query = `https://data.gov.il/api/3/action/datastore_search?resource_id=b1fdc757-07e3-4875-a023-99e59ac44f24`;
-console.log(query);
+// console.log(query);
 
 async function getCounrysData(amountCouplesCards){
     try{
         let respone = await fetch(query + `&limit=${amountCouplesCards}`);
-        console.log(respone);
+        // console.log(respone);
         let data = await respone.json();
-        console.log(data);
+        // console.log(data);
         return data;
     }
     catch{
@@ -23,10 +23,10 @@ let amountOfCards; //כמות קלפי משחק בהתאם
 
 //פונקציה שיוצרת מערך של קלפים
 async function createArrCards(signAmountCards){
-    console.log(signAmountCards);
+    // console.log(signAmountCards);
     let data;
     let arrOfCards=[];
-    console.log(signAmountCards, typeof signAmountCards);
+    // console.log(signAmountCards, typeof signAmountCards);
 
     //נשנה את עיצוב הכפתור בעת לחיצה על כמות קלפים מסוימת
     //נשנה את פריסת הדף
@@ -70,7 +70,7 @@ async function createArrCards(signAmountCards){
             break;
     };
 
-    console.log(data);
+    // console.log(data);
     
     //ניצור מערך עם האובייקטים
     for(let i = 0; i < amountOfCards/2; i++){
@@ -98,7 +98,7 @@ function suffel(arrOfCards){
     }
 
     matchCardToContent(tempArr)
-    console.log(tempArr);
+    // console.log(tempArr);
     
 
 }
@@ -116,16 +116,16 @@ function matchCardToContent(arrOfCards){
         cardElemnt.appendChild(inlineCardElemnt);
 
         if(arrOfCards[i].toFound == "capitalCity"){
-            console.log(arrOfCards[i].country);                
+            // console.log(arrOfCards[i].country);                
             inlineCardElemnt.innerText = arrOfCards[i].country;
         }
         else{
-            console.log(arrOfCards[i].capitlCity);                
+            // console.log(arrOfCards[i].capitlCity);                
             inlineCardElemnt.innerText = arrOfCards[i].capitlCity;
         }
 
         cardsElemntsArr.push(cardElemnt);
-        console.log(cardElemnt);
+        // console.log(cardElemnt);
     }
 
     AssociateToCard(cardsElemntsArr, arrOfCards)
@@ -282,18 +282,19 @@ function eventScreenWidth(){
                     document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr"; 
             }
         }
+        else if(window.innerWidth <= 600){
+            console.log(36);
+            document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr"; 
+        
+        }
+        else if(window.innerWidth <= 1200){
+            console.log(42);
+            document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr 1fr"; 
+        }
+        
+
 }
 
 window.addEventListener("resize", eventScreenWidth);
 window.addEventListener("DOMContentLoaded", eventScreenWidth);
 
-
-// if(window.innerWidth <= 600){
-    //     console.log(36);
-    //     document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr"; 
-
-    // }
-    // else if(window.innerWidth <= 1200){
-    //     console.log(42);
-    //     document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr 1fr"; 
-    // }

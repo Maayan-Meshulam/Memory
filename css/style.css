@@ -28,7 +28,7 @@ body{
     height: 200px;
     cursor: pointer;
     border-radius: 15px;
-    background: url("/images/bgCard.jpg"); 
+    background: url("../images/bgCard.jpg");
     background-size: 100% 100%;
 
 }
