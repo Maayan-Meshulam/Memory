@@ -1,13 +1,9 @@
-// let resourceId = "b1fdc757-07e3-4875-a023-99e59ac44f24";
 let query = `https://data.gov.il/api/3/action/datastore_search?resource_id=b1fdc757-07e3-4875-a023-99e59ac44f24`;
-// console.log(query);
 
 async function getCounrysData(amountCouplesCards){
     try{
         let respone = await fetch(query + `&limit=${amountCouplesCards}`);
-        // console.log(respone);
         let data = await respone.json();
-        // console.log(data);
         return data;
     }
     catch{
@@ -23,10 +19,8 @@ let amountOfCards; //כמות קלפי משחק בהתאם
 
 //פונקציה שיוצרת מערך של קלפים
 async function createArrCards(signAmountCards){
-    // console.log(signAmountCards);
     let data;
     let arrOfCards=[];
-    // console.log(signAmountCards, typeof signAmountCards);
 
     //נשנה את עיצוב הכפתור בעת לחיצה על כמות קלפים מסוימת
     //נשנה את פריסת הדף
@@ -41,7 +35,6 @@ async function createArrCards(signAmountCards){
     document.getElementById("amountOfShowingCardsTotal").innerText = 0;
 
     //TODO: כאשר עוברים ממסך גדול למסך קטן הגודל לא מתעדכן
-    console.log(window.innerWidth +'width');
 
     switch (signAmountCards){
         case 1:
@@ -69,8 +62,6 @@ async function createArrCards(signAmountCards){
             data = await getCounrysData(15);
             break;
     };
-
-    // console.log(data);
     
     //ניצור מערך עם האובייקטים
     for(let i = 0; i < amountOfCards/2; i++){
@@ -97,9 +88,7 @@ function suffel(arrOfCards){
         arrOfCards.splice(randomIdex, 1); //נמחק מהמערך המקורי
     }
 
-    matchCardToContent(tempArr)
-    // console.log(tempArr);
-    
+    matchCardToContent(tempArr);   
 
 }
 
@@ -116,16 +105,13 @@ function matchCardToContent(arrOfCards){
         cardElemnt.appendChild(inlineCardElemnt);
 
         if(arrOfCards[i].toFound == "capitalCity"){
-            // console.log(arrOfCards[i].country);                
             inlineCardElemnt.innerText = arrOfCards[i].country;
         }
         else{
-            // console.log(arrOfCards[i].capitlCity);                
             inlineCardElemnt.innerText = arrOfCards[i].capitlCity;
         }
 
         cardsElemntsArr.push(cardElemnt);
-        // console.log(cardElemnt);
     }
 
     AssociateToCard(cardsElemntsArr, arrOfCards)
@@ -135,7 +121,6 @@ function matchCardToContent(arrOfCards){
 
 //פונקציה שפורסת את הקלפים על השולחן
 function AssociateToCard(cardsElemntsArr, arrOfCards){   
-    console.log(cardsElemntsArr);
 
     let containerObj = document.getElementById('containerCards');
     containerObj.innerHTML = ""; //איפוס הלוח
@@ -267,8 +252,6 @@ function popUpSuccess(){
 //שינוי פריסת הכרטיסים בהתאם לגודל המסך
 function eventScreenWidth(){
 
-    console.log(window.innerWidth);
-
         //טיפול במקרה שהמסך מעל 1200 ונשארים על אותה כמות קלפים ומשנים רק את גודל המסך
         //TODO: כאשר עוברים ממסך של מעל 1200 למסך של 600 ומטה זה לא מדפיס את הגודל הנכון ובגלל זה גם לא את הפריסה הנכונה
         if(window.innerWidth > 1200){
@@ -283,12 +266,10 @@ function eventScreenWidth(){
             }
         }
         else if(window.innerWidth <= 600){
-            console.log(36);
             document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr"; 
         
         }
         else if(window.innerWidth <= 1200){
-            console.log(42);
             document.getElementById("containerCards").style.gridTemplateColumns = "1fr 1fr 1fr"; 
         }
         
